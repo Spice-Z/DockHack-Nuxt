@@ -1,0 +1,104 @@
+<template>
+  <div class="container">
+    <Idea v-for="(value, key) in ideas" v-bind:key="key" v-bind:value="value" v-bind:class="{'second-box':(key!=0)}" class="idea-box" />
+    <FocusedIdea class="idea-box Fidea-box" v-bind:idea="Fidea"/>
+    <Idea v-for="(value, key) in ideas" v-bind:key="key+30" v-bind:value="value" class="idea-box second-box" />
+  </div>
+</template>
+
+<script>
+import Idea from "~/components/Idea.vue";
+import FocusedIdea from "~/components/FocusedIdea.vue";
+
+export default {
+  components: {
+    Idea,
+    FocusedIdea
+  },
+  layout: "default",
+  data: function() {
+    return {
+      id: "",
+      pass: "",
+      ideas: [
+        { id: 1, text: "これはサンプルのつぶやきです" },
+        {
+          id: 2,
+          text:
+            "Nuxt.js では js プラグインを定義することができ、それはルートの Vue.js アプリケーションがインスタンス化される前に実行されます。プラグインとして自前のライブラリを指定することも、外部のモジュールを指定することもできます。"
+        },
+        {
+          id: 3,
+          text:
+            "現在のところ <nuxt-link> は <router-link> と同じです。したがって、このコンポーネントの使い方を vue-router のドキュメント で確認することをお勧めします。"
+        },
+        {
+          id: 4,
+          text:
+            "The prop is used to pass in an initial value; the child component wants to use it as a local data property afterwards."
+        }
+      ],
+      Fidea: {
+        id: 7,
+        text: "爆速の開発環境で驚いているそ。これはすごい。"
+      }
+    };
+  },
+  computed: {
+    notbox: function() {
+      return {
+        "second-box": true
+      };
+    }
+  }
+};
+</script>
+
+<style>
+.container {
+  margin-top: 56px;
+  padding: 18px 24px 0 24px;
+}
+
+.idea-box {
+  margin-bottom: 28px;
+  position: relative;
+}
+
+.Fidea-box::before {
+  position: absolute;
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  top: -40px;
+  border: 20px transparent solid;
+  border-bottom: 20px rgba(255, 255, 255, 0.3) solid;
+}
+
+.first-box::after {
+  position: absolute;
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  top: -40px;
+  border: 20px transparent solid;
+  border-bottom: 20px rgba(255, 255, 255, 0.15) solid;
+}
+
+.second-box ::before {
+  position: absolute;
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  top: -40px;
+  border: 20px transparent solid;
+  border-bottom: 20px rgba(255, 255, 255, 0.15) solid;
+}
+
+.Fidea-box {
+  margin: auto -24px 28px -24px;
+}
+</style>
