@@ -3,7 +3,7 @@
      <p class="title">LOGIN</p>
      <input class="id" v-model="id" type="text" placeholder="ID">
      <input class="pass" v-model="pass" type="text" placeholder="PASS">
-     <button class="send-button">GO</button>
+     <router-link to="/IL" class="send-button">GO</router-link>
   </div>
 </template>
 
@@ -68,5 +68,9 @@ input {
   font-weight: bold;
   line-height: 43px;
   text-align: center;
+}
+
+a {
+  text-decoration: none;
 }
 </style>

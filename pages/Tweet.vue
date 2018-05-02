@@ -1,7 +1,7 @@
 <template>
   <div class="all-in-container">
      <p class="tweet-title">I THINK...</p>
-     <input class="tweet-box" v-model="tweet" type="textarea">
+     <textarea class="tweet-box" v-model="tweet"></textarea>
      <button class="send-button">tweet</button>
   </div>
 </template>
@@ -44,11 +44,16 @@ export default {
 
 .tweet-box {
   margin-bottom: 36px;
+  padding: 10px;
   height: 160px;
   width: 278px;
   border: none;
   border-radius: 14px;
   background-color: rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+  font-size: 20px;
+  letter-spacing: 0.3em;
+  line-height: 30px;
 }
 
 .send-button {
