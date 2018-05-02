@@ -17,7 +17,7 @@ const store = () =>
       async getIdeas({ commit }, { ideas }) {
         if (!ideas) {
           const api_ideas = await this.$axios.$get(
-            "http://dock-hack.herokuapp.com/api/general"
+            "https://dock-hack.herokuapp.com/api/general"
           );
         }
         ideas = api_ideas;
@@ -28,7 +28,7 @@ const store = () =>
           return;
         }
         const ideas = await this.$axios.$get(
-          "http://dock-hack.herokuapp.com/api/general"
+          "https://dock-hack.herokuapp.com/api/general"
         );
         commit("saveIdeas", { ideas });
       }
