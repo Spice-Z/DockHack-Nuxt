@@ -28,6 +28,10 @@ html {
   box-sizing: border-box;
 }
 
+input:focus {
+  outline: 0;
+}
+
 .background-default {
   z-index: -1;
   position: fixed;

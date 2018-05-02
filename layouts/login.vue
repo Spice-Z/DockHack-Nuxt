@@ -25,6 +25,10 @@ body {
   width: 100%;
 }
 
+input:focus {
+  outline: 0;
+}
+
 .background-login {
   z-index: -1;
   position: fixed;

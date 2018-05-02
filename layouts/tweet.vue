@@ -37,6 +37,10 @@ html {
   bottom: 0;
 }
 
+input:focus {
+  outline: 0;
+}
+
 *,
 *:before,
 *:after {
