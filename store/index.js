@@ -27,9 +27,16 @@ const store = () =>
         if (this.state.ideas) {
           return;
         }
+
         const ideas = await this.$axios.$get(
           "https://dock-hack.herokuapp.com/api/general"
         );
+        //ideaをランダムに並び替えます
+        for (let i = ideas.length - 1; i >= 0; i--) {
+          let rand = Math.floor(Math.random() * (i + 1));
+          [ideas[i], ideas[rand]] = [ideas[rand], ideas[i]];
+        }
+
         commit("saveIdeas", { ideas });
       }
     }
