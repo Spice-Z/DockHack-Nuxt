@@ -1,6 +1,6 @@
 <template>
   <div class="idea">
-    <p>{{idea.text}}</p>
+    <p>{{idea.idea_text}}</p>
   </div>
 </template>
 <script>

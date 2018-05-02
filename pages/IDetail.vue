@@ -21,26 +21,26 @@ export default {
       id: "",
       pass: "",
       ideas: [
-        { id: 1, text: "これはサンプルのつぶやきです" },
+        { id: 1, idea_text: "これはサンプルのつぶやきです" },
         {
           id: 2,
-          text:
+          idea_text:
             "Nuxt.js では js プラグインを定義することができ、それはルートの Vue.js アプリケーションがインスタンス化される前に実行されます。プラグインとして自前のライブラリを指定することも、外部のモジュールを指定することもできます。"
         },
         {
           id: 3,
-          text:
+          idea_text:
             "現在のところ <nuxt-link> は <router-link> と同じです。したがって、このコンポーネントの使い方を vue-router のドキュメント で確認することをお勧めします。"
         },
         {
           id: 4,
-          text:
+          idea_text:
             "The prop is used to pass in an initial value; the child component wants to use it as a local data property afterwards."
         }
       ],
       Fidea: {
         id: 7,
-        text: "爆速の開発環境で驚いているそ。これはすごい。"
+        idea_text: "爆速の開発環境で驚いているそ。これはすごい。"
       }
     };
   },
