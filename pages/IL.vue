@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <Idea v-for="(value, key) in ideasx" v-bind:key="key+100" v-bind:value="value" class="idea-box" />
+    <Idea v-for="(value, key) in ideas" v-bind:key="key+100" v-bind:value="value" class="idea-box" />
   </div>
 </template>
 
@@ -24,7 +24,7 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(["ideasx"])
+    ...mapGetters(["ideas"])
   }
 };
 </script>

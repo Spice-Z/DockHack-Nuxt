@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <Idea v-for="(value, key) in ideas" v-bind:key="key" v-bind:value="value" v-bind:class="{'second-box':(key!=0)}" class="idea-box" />
-    <FocusedIdea class="idea-box Fidea-box" v-bind:idea="Fidea"/>
+    <FocusedIdea class="idea-box FIdea-box" v-bind:idea="getFIdea()"/>
     <Idea v-for="(value, key) in ideas" v-bind:key="key+30" v-bind:value="value" class="idea-box second-box" />
   </div>
 </template>
@@ -18,7 +18,7 @@ export default {
   layout: "default",
   data: function() {
     return {
-      id: "",
+      FIdea_id: null,
       pass: "",
       ideas: [
         { id: 1, idea_text: "これはサンプルのつぶやきです" },
@@ -38,17 +38,29 @@ export default {
             "The prop is used to pass in an initial value; the child component wants to use it as a local data property afterwards."
         }
       ],
-      Fidea: {
+      FIdea: {
         id: 7,
         idea_text: "爆速の開発環境で驚いているそ。これはすごい。"
       }
     };
   },
-  computed: {
-    notbox: function() {
-      return {
-        "second-box": true
-      };
+  asyncData(context) {
+    return {
+      // asyncDataでreturnすると、dataにマージされる
+      FIdea_id: context.query["FIdeaId"]
+    };
+  },
+  methods: {
+    getFIdea: function() {
+      if (this.FIdea_id) {
+        let Fid = this.FIdea_id;
+        return this.ideas.find(function(idea) {
+          return idea.id == Fid;
+        });
+      }
+
+      let i = { id: 1, idea_text: "これはサンプルのつぶやきです" };
+      return;
     }
   }
 };
@@ -65,7 +77,7 @@ export default {
   position: relative;
 }
 
-.Fidea-box::before {
+.FIdea-box::before {
   position: absolute;
   content: "";
   display: block;
@@ -98,7 +110,7 @@ export default {
   border-bottom: 20px rgba(255, 255, 255, 0.15) solid;
 }
 
-.Fidea-box {
+.FIdea-box {
   margin: auto -24px 28px -24px;
 }
 </style>

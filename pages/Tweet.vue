@@ -23,6 +23,13 @@ export default {
 </script>
 
 <style>
+textarea:focus {
+  outline: 0;
+}
+
+button:focus {
+  outline: 0;
+}
 .all-in-container {
   position: absolute;
   display: flex;

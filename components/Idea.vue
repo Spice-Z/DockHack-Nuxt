@@ -1,6 +1,6 @@
 <template>
   <div class="idea">
-    <p>{{idea.idea_text}}</p>
+    <router-link :to="{ path: '/IDetail', query: { FIdeaId: idea.id }}">{{idea.idea_text}}</router-link>
   </div>
 </template>
 <script>
@@ -24,5 +24,10 @@ export default {
   font-family: "Hiragino Sans";
   font-size: 20px;
   line-height: 30px;
+}
+
+a {
+  color: #ffffff;
+  text-decoration: none;
 }
 </style>

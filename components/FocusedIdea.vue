@@ -1,6 +1,6 @@
 <template>
-  <div class="FIdea">
-    <p>{{FIdea.text}}</p>
+  <div v-if="FIdea" class="FIdea">
+    <p>{{FIdea.idea_text}}</p>
   </div>
 </template>
 <script>

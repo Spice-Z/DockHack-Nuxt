@@ -6,7 +6,7 @@ const store = () =>
       ideas: null
     },
     getters: {
-      ideasx: state => state.ideas
+      ideas: state => state.ideas
     },
     mutations: {
       saveIdeas(state, { ideas }) {
