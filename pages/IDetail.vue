@@ -22,11 +22,7 @@ export default {
     return {
       FIdeaId: null,
       pass: "",
-      ideas: this.$store.getters.ideas,
-      FIdea: {
-        id: 7,
-        idea_text: "爆速の開発環境で驚いているそ。これはすごい。"
-      }
+      ideas: this.$store.getters.ideas
     };
   },
   asyncData(context) {

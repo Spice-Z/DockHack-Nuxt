@@ -16,6 +16,7 @@ module.exports = {
   */
   loading: { color: "#FFFFFF" },
   modules: ["@nuxtjs/axios"],
+  mode: "spa",
   /*
   ** Build configuration
   */
