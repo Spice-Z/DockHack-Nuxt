@@ -2,7 +2,7 @@
   <div class="all-in-container">
      <p class="tweet-title">I THINK...</p>
      <textarea class="tweet-box" v-model="tweet"></textarea>
-     <button class="send-button">tweet</button>
+     <button v-on:click="postNewIdea" class="send-button">tweet</button>
   </div>
 </template>
 
@@ -16,8 +16,48 @@ export default {
   layout: "tweet",
   data: function() {
     return {
-      tweet: ""
+      tweet: "",
+      mentionToId: null
     };
+  },
+  asyncData(context) {
+    return {
+      mentionToId: context.query["mentionToId"]
+    };
+  },
+  methods: {
+    postNewIdea: async function(event) {
+      if (this.tweet && this.mentionToId) {
+        console.log("mentionToId is");
+        console.log(this.mentionToId);
+        let data = {
+          mentionTo: this.mentionToId,
+          ideaText: this.tweet
+        };
+        try {
+          await this.$axios.post(
+            "https://dock-hack.herokuapp.com/api/tweetNewIdea",
+            { 0: data }
+          );
+          return;
+        } catch (error) {
+          console.log(error);
+        }
+      }
+      if (this.tweet) {
+        let data = { ideaText: this.tweet };
+        try {
+          await this.$axios.post(
+            "https://dock-hack.herokuapp.com/api/tweetNewIdea",
+            { 0: data }
+          );
+        } catch (error) {
+          console.log(error);
+        }
+      }
+      this.tweet = await "";
+      return;
+    }
   }
 };
 </script>
