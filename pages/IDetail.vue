@@ -3,6 +3,7 @@
     <Idea v-for="(value, key) in getUpperIdeas()" v-bind:key="key" v-bind:value="value" v-bind:class="{'second-box':(key!=0)}" class="idea-box" />
     <FocusedIdea class="idea-box FIdea-box" v-bind:idea="getFIdea()"/>
     <Idea v-for="(value, key) in getUnderIdeas()" v-bind:key="key+30" v-bind:value="value" class="idea-box second-box" />
+    <router-link :to="{ path: '/Tweet' , query: { FIdeaId: getLastIdeaId() } }" class="mentionButton">+</router-link>
   </div>
 </template>
 
@@ -38,7 +39,6 @@ export default {
           return idea.id == Fid;
         });
       }
-
       return;
     },
     getUnderIdeas: function() {
@@ -46,6 +46,16 @@ export default {
     },
     getUpperIdeas: function() {
       return extractUpperIdea(this.FIdeaId, this.ideas);
+    },
+    getLastIdeaId: function() {
+      let lastIdea = this.getUnderIdeas().pop();
+      if (lastIdea) {
+        return lastIdea.id;
+      }
+      if (this.FIdeaId) {
+        return this.FIdeaId;
+      }
+      return "";
     }
   }
 };
@@ -98,5 +108,19 @@ export default {
 
 .FIdea-box {
   margin: auto -24px 28px -24px;
+}
+.mentionButton {
+  margin-right: auto;
+  margin-left: auto;
+  display: block;
+  height: 39px;
+  width: 156px;
+  border-radius: 7px;
+  background-color: rgba(255, 255, 255, 0.7);
+  box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.5);
+  color: #2b5876;
+  font-size: 36px;
+  line-height: 33px;
+  text-align: center;
 }
 </style>
