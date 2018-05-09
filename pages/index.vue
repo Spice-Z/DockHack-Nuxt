@@ -4,8 +4,6 @@
     <p class="title">LOGIN</p>
     <input class="id" v-model="id" type="text" placeholder="ID">
     <input class="pass" v-model="pass" type="text" placeholder="PASS">
-    <button type="button" @click="addCredential">Set credential</button>
-    <button type="button" @click="removeCredential">Remove credential</button>
     <nuxt-link to="/IL" class="send-button">GO</nuxt-link>
   </div>
 </template>
