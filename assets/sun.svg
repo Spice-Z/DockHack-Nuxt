@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49.3 (51167) - http://www.bohemiancoding.com/sketch -->
+    <title>Shape</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard-1" transform="translate(-154.000000, -1.000000)" fill="#FFFFFF">
+            <path d="M158,9 C158,11.21 159.79,13 162,13 C164.21,13 166,11.21 166,9 C166,6.79 164.21,5 162,5 C159.79,5 158,6.79 158,9 L158,9 Z M160,9 C160,7.9 160.9,7 162,7 C163.1,7 164,7.9 164,9 C164,10.1 163.1,11 162,11 C160.9,11 160,10.1 160,9 L160,9 Z M167,8 L167,10 L170,10 L170,8 L167,8 L167,8 Z M161,14 L161,17 L163,17 L163,14 L161,14 L161,14 Z M154,8 L154,10 L157,10 L157,8 L154,8 L154,8 Z M161,1 L161,4 L163,4 L163,1 L161,1 L161,1 Z M166.12,11.75 L164.75,13.12 L166.81,15.19 L168.19,13.81 L166.12,11.75 L166.12,11.75 Z M157.88,11.75 L155.81,13.81 L157.19,15.19 L159.25,13.12 L157.88,11.75 L157.88,11.75 Z M157.19,2.81 L155.81,4.19 L157.88,6.25 L159.25,4.88 L157.19,2.81 L157.19,2.81 Z M166.81,2.81 L164.75,4.88 L166.12,6.25 L168.19,4.19 L166.81,2.81 L166.81,2.81 Z" id="Shape"></path>
+        </g>
+    </g>
+</svg>

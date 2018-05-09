@@ -1,9 +1,9 @@
 <template>
   <nav class="header">
-    <div class="header-menu"><router-link to="/IL" class="header-menu-icon home-icon"></router-link></div>
-    <div class="header-menu"><router-link to="/IDetail" class="header-menu-icon idea-icon"></router-link></div>
-    <div class="header-menu"><router-link to="/Tweet" class="header-menu-icon tweet-icon"></router-link></div>
-    <div class="header-menu"><router-link to="/Profile" class="header-menu-icon profile-icon"></router-link></div>
+    <div class="header-menu"><nuxt-link to="/IL" class="header-menu-icon home-icon"></nuxt-link></div>
+    <div class="header-menu"><nuxt-link to="/IDetail" class="header-menu-icon idea-icon"></nuxt-link></div>
+    <div class="header-menu"><nuxt-link to="/Tweet" class="header-menu-icon tweet-icon"></nuxt-link></div>
+    <div class="header-menu"><nuxt-link to="/Profile" class="header-menu-icon profile-icon"></nuxt-link></div>
   </nav>
 </template>
 

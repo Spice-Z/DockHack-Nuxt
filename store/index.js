@@ -9,21 +9,16 @@ const store = () =>
       ideas: state => state.ideas
     },
     mutations: {
-      saveIdeas(state, { ideas }) {
+      saveIdeas(state, {
+        ideas
+      }) {
         state.ideas = ideas;
       }
     },
     actions: {
-      async getIdeas({ commit }, { ideas }) {
-        if (!ideas) {
-          const api_ideas = await this.$axios.$get(
-            "https://dock-hack.herokuapp.com/api/general"
-          );
-        }
-        ideas = api_ideas;
-        commit("saveIdeas", { ideas });
-      },
-      async initIdeas({ commit }) {
+      async initIdeas({
+        commit
+      }) {
         if (this.state.ideas) {
           return;
         }
@@ -37,7 +32,25 @@ const store = () =>
           [ideas[i], ideas[rand]] = [ideas[rand], ideas[i]];
         }
 
-        commit("saveIdeas", { ideas });
+        commit("saveIdeas", {
+          ideas
+        });
+      },
+
+      async getIdeas({
+        commit
+      }, {
+        ideas
+      }) {
+        if (!ideas) {
+          const api_ideas = await this.$axios.$get(
+            "https://dock-hack.herokuapp.com/api/general"
+          );
+        }
+        ideas = api_ideas;
+        commit("saveIdeas", {
+          ideas
+        });
       }
     }
   });

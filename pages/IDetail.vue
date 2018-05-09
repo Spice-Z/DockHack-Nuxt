@@ -3,7 +3,7 @@
     <Idea v-for="(value, key) in getUpperIdeas()" v-bind:key="key" v-bind:value="value" v-bind:class="{'second-box':(key!=0)}" class="idea-box" />
     <FocusedIdea class="idea-box FIdea-box" v-bind:idea="getFIdea()"/>
     <Idea v-for="(value, key) in getUnderIdeas()" v-bind:key="key+30" v-bind:value="value" class="idea-box second-box" />
-    <router-link :to="{ path: '/Tweet' , query: { mentionToId: getLastIdeaId() } }" class="mentionButton">+</router-link>
+    <nuxt-link :to="{ path: '/Tweet' , query: { mentionToId: getLastIdeaId() } }" class="mentionButton">+</nuxt-link>
   </div>
 </template>
 
@@ -95,7 +95,7 @@ export default {
   border-bottom: 20px rgba(255, 255, 255, 0.15) solid;
 }
 
-.second-box ::before {
+.second-box::before {
   position: absolute;
   content: "";
   display: block;
