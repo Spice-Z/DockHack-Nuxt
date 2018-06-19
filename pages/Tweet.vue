@@ -39,12 +39,11 @@ export default {
             "https://dock-hack.herokuapp.com/api/tweetNewIdea",
             { 0: data }
           );
-          return;
         } catch (error) {
           console.log(error);
         }
       }
-      if (this.tweet) {
+      if (this.tweet && !this.mentionToId) {
         let data = { ideaText: this.tweet };
         try {
           await this.$axios.post(
