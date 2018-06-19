@@ -23,11 +23,12 @@
 .header-menu {
   flex-grow: 1;
   display: flex;
+  padding: 10px;
 }
 .header-menu-icon {
   display: block;
-  margin: 15%;
-  width: 70%;
+  width: 100%;
+  height: 100%;
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
