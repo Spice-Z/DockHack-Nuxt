@@ -8,8 +8,10 @@
 
 <script>
 import Idea from "~/components/Idea.vue";
+import { store } from 'vuex';
 
 export default {
+  store,
   components: {
     Idea
   },
@@ -39,6 +41,14 @@ export default {
             "https://dock-hack.herokuapp.com/api/tweetNewIdea",
             { 0: data }
           );
+          let newIdea = {
+            date:'',
+            id: 99999,
+            idea_text: this.tweet,
+            is_mention_to: this.mentionToId,
+            is_mentiond: ''
+          }
+          this.$store.dispatch("addIdea",newIdea);
         } catch (error) {
           console.log(error);
         }
@@ -50,6 +60,14 @@ export default {
             "https://dock-hack.herokuapp.com/api/tweetNewIdea",
             { 0: data }
           );
+          let newIdea = {
+            date:'',
+            id: 99999,
+            idea_text: this.tweet,
+            is_mention_to: '',
+            is_mentiond: ''
+          }
+          this.$store.dispatch("addIdea",newIdea);
         } catch (error) {
           console.log(error);
         }

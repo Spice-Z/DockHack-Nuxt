@@ -1,7 +1,7 @@
 <template>
   <div class="idea">
     <span class="button-in-idea" @click="openDeleteModal"></span>
-    <nuxt-link :to="{ path: '/IDetail', query: { FIdeaId: idea.id }}">{{idea.idea_text}}</nuxt-link>
+    <nuxt-link :to="{ path: '/IDetail', query: { FIdeaId: idea.id }}">{{idea.idea_text || makeNewLine }}</nuxt-link>
     <div v-if="isShowDelete" class="delete-modal">
       <p>"{{idea.idea_text.substr(0,15)}} ~" is needed?</p>
       <button class="remain-button-in-modal" @click="closeDeleteModal">Remain</button>
@@ -30,6 +30,11 @@ export default {
     deleteIdea: async function(event) {
       let result = await deleteIdea(this.idea.id);
       await this.closeDeleteModal();
+    }
+  },
+  filters:{
+    makeNewLine: function (value) {
+      return value.replace(/\n/g,'<br />')
     }
   }
 };
