@@ -4,6 +4,7 @@
     <p class="title">LOGIN</p>
     <input class="id" v-model="id" type="text" placeholder="ID">
     <input class="pass" v-model="pass" type="text" placeholder="PASS">
+    <button class="send-button" @click="postLoginData()">login?</button>
     <nuxt-link to="/IL" class="send-button">GO</nuxt-link>
   </div>
 </template>
@@ -30,6 +31,21 @@ export default {
       console.log("remove");
 
       cookies.set("credential", "");
+    },
+    postLoginData() {
+      const data = {
+        name: 'demouser',
+        password: 'password'
+      };
+      try {
+          const params = new URLSearchParams();
+          params.append('name', 'demouser');
+          params.append('password', 'password');
+          const res = await this.$axios.post("https://quattorroserver.herokuapp.com/api/authenticate", data);
+          console.log(res);
+        } catch (error) {
+          console.log(error);
+        }
     }
   }
 };
