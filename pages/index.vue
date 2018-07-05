@@ -32,7 +32,7 @@ export default {
 
       cookies.set("credential", "");
     },
-    postLoginData() {
+    async postLoginData() {
       const data = {
         name: 'demouser',
         password: 'password'
