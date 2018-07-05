@@ -43,6 +43,7 @@ export default {
           params.append('password', 'password');
           const res = await this.$axios.post("https://quattorroserver.herokuapp.com/api/authenticate", data);
           console.log(res);
+          console.log(res.data.token);
         } catch (error) {
           console.log(error);
         }
