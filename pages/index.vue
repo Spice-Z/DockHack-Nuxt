@@ -55,7 +55,9 @@ export default {
     },
     async getUsers(){
       const token = cookies.get('dockhack-x-access-token');
+      const res = await this.$axios.get('https://quattorroserver.herokuapp.com/api/users', { headers: {'x-access-token': token} })
       console.log(token);
+      console.log(res);
     }
   }
 };
