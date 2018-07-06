@@ -5,6 +5,7 @@
     <input class="id" v-model="id" type="text" placeholder="ID">
     <input class="pass" v-model="pass" type="text" placeholder="PASS">
     <button class="send-button" @click="postLoginData()">login?</button>
+    <button class="send-button" @click="getUsers()">User</button>
     <nuxt-link to="/IL" class="send-button">GO</nuxt-link>
   </div>
 </template>
@@ -44,9 +45,17 @@ export default {
           const res = await this.$axios.post("https://quattorroserver.herokuapp.com/api/authenticate", data);
           console.log(res);
           console.log(res.data.token);
+          if(res.data.success){
+            cookies.set('dockhack-x-access-token',res.data.token,{ path: '/', maxAge: 1440 });
+
+          }
         } catch (error) {
           console.log(error);
         }
+    },
+    async getUsers(){
+      const token = cookies.get('dockhack-x-access-token');
+      console.log(token);
     }
   }
 };
@@ -66,8 +75,8 @@ export default {
 .title {
   margin-bottom: 45px;
   color: #ffffff;
-  font-family: "Hiragino Sans";
   font-size: 36px;
+  font-family: "Hiragino Sans";
   line-height: 54px;
 }
 
