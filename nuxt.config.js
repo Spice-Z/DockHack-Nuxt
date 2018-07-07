@@ -3,39 +3,39 @@ module.exports = {
    ** Headers of the page
    */
   head: {
-    title: "dock-hack",
+    title: 'dock-hack',
     meta: [{
-        charset: "utf-8"
-      },
-      {
-        name: "viewport",
-        content: "width=device-width, initial-scale=1"
-      },
-      {
-        hid: "description",
-        name: "description",
-        content: "Nuxt.js project"
-      }
+      charset: 'utf-8'
+    },
+    {
+      name: 'viewport',
+      content: 'width=device-width, initial-scale=1'
+    },
+    {
+      hid: 'description',
+      name: 'description',
+      content: 'Nuxt.js project'
+    }
     ],
     link: [{
-      rel: "icon",
-      type: "image/x-icon",
-      href: "/favicon.ico"
+      rel: 'icon',
+      type: 'image/x-icon',
+      href: '/favicon.ico'
     }]
   },
   /*
    ** Customize the progress bar color
    */
   loading: {
-    color: "#FFFFFF"
+    color: '#FFFFFF'
   },
-  modules: ["@nuxtjs/axios",
+  modules: ['@nuxtjs/axios',
     '@nuxtjs/pwa'
   ],
   workbox: {
-    dev: true,
+    dev: true
   },
-  mode: "spa",
+  mode: 'spa',
   manifest: {
     name: 'DockHack',
     short_name: 'DH',
@@ -54,18 +54,18 @@ module.exports = {
     /*
      ** Run ESLint on save
      */
-    extend(config, {
+    extend (config, {
       isDev,
       isClient
     }) {
       if (isDev && isClient) {
         config.module.rules.push({
-          enforce: "pre",
+          enforce: 'pre',
           test: /\.(js|vue)$/,
-          loader: "eslint-loader",
+          loader: 'eslint-loader',
           exclude: /(node_modules)/
-        });
+        })
       }
     }
   }
-};
+}
