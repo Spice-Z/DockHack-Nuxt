@@ -23,14 +23,6 @@ export default {
     };
   },
   methods: {
-    addCredential() {
-      cookies.set("credential", "1");
-    },
-    removeCredential() {
-      console.log("remove");
-
-      cookies.set("credential", "");
-    },
     async postLoginData() {
       console.log(this.name);
       console.log(this.pass);

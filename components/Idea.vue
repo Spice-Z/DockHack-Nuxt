@@ -41,7 +41,7 @@ export default {
 </script>
 
 
-<style>
+<style scope>
 .idea {
   position: relative;
   border-radius: 7px;

@@ -7,7 +7,7 @@
   </nav>
 </template>
 
-<style>
+<style scope>
 .header {
   z-index: 100;
   position: fixed;

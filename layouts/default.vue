@@ -3,15 +3,28 @@
     <div class="background-default"></div>
     <AppNav />
     <nuxt/>
+    <button class="logout-button" @click="logOut()"></button>
   </div>
 </template>
 <script>
 import AppNav from "~/components/AppNav.vue";
+import Cookies from "universal-cookie";
+const cookies = new Cookies();
+
 export default {
   components: {
     AppNav
   },
-  middleware: 'isLoggedIn'
+  middleware: 'isLoggedIn',
+  methods: {
+    logOut() {
+      console.log('logout');
+      
+      cookies.remove('dockhack-x-access-token')
+      cookies.remove('dockhack-userId')
+      this.$router.push('/')
+    }
+  }
 };
 </script>
 
@@ -75,5 +88,18 @@ input:focus {
 .button--grey:hover {
   color: #fff;
   background-color: #35495e;
+}
+
+.logout-button {
+  position: fixed;
+  left: 5px;
+  bottom: 5px;
+  width: 40px;
+  height: 40px;
+  display: block;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url(../assets/door.svg);
 }
 </style>
