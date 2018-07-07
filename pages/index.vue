@@ -46,7 +46,8 @@ export default {
           console.log(res);
           console.log(res.data.token);
           if(res.data.success){
-            cookies.set('dockhack-x-access-token',res.data.token,{ path: '/', maxAge: 1440 });
+            cookies.set('dockhack-x-access-token',res.data.token,{ path: '/', maxAge: 14400 });
+            cookies.set('dockhack-userId',res.data.userId,{ path: '/', maxAge: 14400 });
 
           }
         } catch (error) {
@@ -54,19 +55,16 @@ export default {
         }
     },
     async getUsers(){
-      const data = {
-        userId: 1,
+      const reqData = {
+        userId: cookies.get('dockhack-userId'),
       };
       const config = {
         headers: {
-          'x-access-token': token
+          'x-access-token': cookies.get('dockhack-x-access-token')
         }
-      }
-      const res = await this.$axios.get('https://quattorroserver.herokuapp.com/api/general', data, config)
-      console.log(res.data);
-      if(!res.success){
-        this.$nuxt.$router.replace({ path: '/' })
-      }
+      };
+      const res = await this.$axios.get('https://quattorroserver.herokuapp.com/api/general/'+reqData.userId, config)
+      console.log(res);
     }
   }
 };
