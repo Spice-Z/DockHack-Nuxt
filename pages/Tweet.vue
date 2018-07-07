@@ -1,17 +1,15 @@
 <template>
   <div class="all-in-container">
-     <p class="tweet-title">I THINK...</p>
-     <textarea class="tweet-box" v-model="tweet"></textarea>
-     <button v-on:click="postNewIdea" class="send-button">tweet</button>
+    <p class="tweet-title">I THINK...</p>
+    <textarea class="tweet-box" v-model="tweet"></textarea>
+    <button v-on:click="postNewIdea" class="send-button">tweet</button>
   </div>
 </template>
 
 <script>
 import Idea from "~/components/Idea.vue";
-import { store } from 'vuex';
 
 export default {
-  store,
   components: {
     Idea
   },

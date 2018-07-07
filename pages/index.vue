@@ -2,27 +2,25 @@
 <template>
   <div class="all-in-container">
     <p class="title">LOGIN</p>
-    <input class="id" v-model="id" type="text" placeholder="ID">
+    <p>{{ message }}</p>
+    <input class="id" v-model="name" type="text" placeholder="ID">
     <input class="pass" v-model="pass" type="text" placeholder="PASS">
-    <button class="send-button" @click="postLoginData()">login?</button>
-    <button class="send-button" @click="getUsers()">User</button>
-    <nuxt-link to="/IL" class="send-button">GO</nuxt-link>
+    <button class="send-button" @click="postLoginData()">LOGIN</button>
   </div>
 </template>
 
 <script>
 import Cookies from "universal-cookie";
-let cookies;
+const cookies = new Cookies();
+
 export default {
   layout: "login",
   data: function() {
     return {
-      id: "",
-      pass: ""
+      name: "",
+      pass: "",
+      message: ""
     };
-  },
-  mounted() {
-    cookies = new Cookies();
   },
   methods: {
     addCredential() {
@@ -34,9 +32,11 @@ export default {
       cookies.set("credential", "");
     },
     async postLoginData() {
+      console.log(this.name);
+      console.log(this.pass);
       const data = {
-        name: 'demouser',
-        password: 'password'
+        name: this.name,
+        password: this.pass
       };
       try {
           const params = new URLSearchParams();
@@ -48,23 +48,15 @@ export default {
           if(res.data.success){
             cookies.set('dockhack-x-access-token',res.data.token,{ path: '/', maxAge: 14400 });
             cookies.set('dockhack-userId',res.data.userId,{ path: '/', maxAge: 14400 });
-
+            this.message = 'logeed in !'
+            this.$router.push('/IL')
+          } else {
+            this.message = 'cannot logged in .'
           }
         } catch (error) {
+          this.message = 'error!'
           console.log(error);
         }
-    },
-    async getUsers(){
-      const reqData = {
-        userId: cookies.get('dockhack-userId'),
-      };
-      const config = {
-        headers: {
-          'x-access-token': cookies.get('dockhack-x-access-token')
-        }
-      };
-      const res = await this.$axios.get('https://quattorroserver.herokuapp.com/api/general/'+reqData.userId, config)
-      console.log(res);
     }
   }
 };
