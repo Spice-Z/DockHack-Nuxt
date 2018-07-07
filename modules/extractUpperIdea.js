@@ -2,7 +2,7 @@ module.exports = function extractUpperIdea(FIdeaId, ideas) {
   let mentionToIdea = [];
   let nextMentionToIdea;
   while (FIdeaId) {
-    nextMentionToIdea = ideas.find(function(idea) {
+    nextMentionToIdea = ideas.find(function (idea) {
       return idea.is_mentiond == FIdeaId;
     });
 
