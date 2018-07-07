@@ -1,4 +1,6 @@
 import Vuex from 'vuex'
+import Cookies from 'universal-cookie'
+const cookies = new Cookies()
 
 const store = () =>
   new Vuex.Store({
@@ -23,7 +25,16 @@ const store = () =>
         if (this.state.ideas) {
           return
         }
-        const ideas = await this.$axios.$get('https://dock-hack.herokuapp.com/api/general')
+        const reqData = {
+          userId: cookies.get('dockhack-userId')
+        }
+        const config = {
+          headers: {
+            'x-access-token': cookies.get('dockhack-x-access-token')
+          }
+        }
+        const res = await this.$axios.get('https://quattorroserver.herokuapp.com/api/general/' + reqData.userId, config)
+        const ideas = res.data
         // ideaをランダムに並び替えます
         for (let i = ideas.length - 1; i >= 0; i--) {
           let rand = Math.floor(Math.random() * (i + 1));

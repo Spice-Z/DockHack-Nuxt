@@ -11,9 +11,7 @@ export default {
   components: {
     AppNav
   },
-  router: {
-    middleware: 'idLoggedIn'
-  }
+  middleware: 'isLoggedIn'
 };
 </script>
 
