@@ -57,9 +57,12 @@ export default {
       const data = {
         userId: 1,
       };
-      const token = cookies.get('dockhack-x-access-token');
-      const res = await this.$axios.get('https://quattorroserver.herokuapp.com/api/users', data, { headers: {'x-access-token': token} })
-      console.log(token);
+      const config = {
+        headers: {
+          'x-access-token': token
+        }
+      }
+      const res = await this.$axios.get('https://quattorroserver.herokuapp.com/api/general', data, config)
       console.log(res.data);
       if(!res.success){
         this.$nuxt.$router.replace({ path: '/' })
