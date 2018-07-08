@@ -60,7 +60,7 @@ export default {
           console.log(data);
         try {
           await this.$axios.post(
-            "https://dock-hack.herokuapp.com/api/tweetNewIdea",
+            "https://quattorroserver.herokuapp.com/api/tweetNewIdea",
             data
           );
           let newIdea = {
