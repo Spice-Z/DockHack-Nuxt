@@ -53,11 +53,15 @@ export default {
         }
       }
       if (this.tweet && !this.mentionToId) {
-        let data = { ideaText: this.tweet };
+        let data = {
+          ideaText: this.tweet,
+          userId: cookies.get('dockhack-userId')
+          };
+          console.log(data);
         try {
           await this.$axios.post(
             "https://dock-hack.herokuapp.com/api/tweetNewIdea",
-            { 0: data }
+            data
           );
           let newIdea = {
             date:'',
