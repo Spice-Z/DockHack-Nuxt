@@ -29,6 +29,9 @@ module.exports = {
   loading: {
     color: '#FFFFFF'
   },
+  router: {
+    middleware: ['isLoggedIn']
+  },
   modules: ['@nuxtjs/axios',
     '@nuxtjs/pwa'
   ],

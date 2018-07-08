@@ -15,7 +15,6 @@ export default {
   components: {
     AppNav
   },
-  middleware: 'isLoggedIn',
   methods: {
     logOut() {
       console.log('logout')
