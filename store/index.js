@@ -36,7 +36,7 @@ const store = () =>
             'x-access-token': cookies.get('dockhack-x-access-token')
           }
         }
-        const res = await this.$axios.get('http://localhost:8080/api/general/' + reqData.userId, config)
+        const res = await this.$axios.get('https://quattorroserver.herokuapp.com/api/general/' + reqData.userId, config)
         const ideas = res.data
         // ideaをランダムに並び替えます
         for (let i = ideas.length - 1; i >= 0; i--) {
