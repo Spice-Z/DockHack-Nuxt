@@ -39,7 +39,7 @@ export default {
         };
         try {
           await this.$axios.post(
-            "http://localhost:8080/api/tweetNewIdea", data);
+            "https://quattorroserver.herokuapp.com/api/tweetNewIdea", data);
           let newIdea = {
             date:'',
             id: 99999,
