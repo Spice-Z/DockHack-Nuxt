@@ -18,8 +18,8 @@ export default {
   middleware: 'isLoggedIn',
   methods: {
     logOut() {
-      console.log('logout');
-      
+      console.log('logout')
+      this.$store.dispatch("deleteIdeas")
       cookies.remove('dockhack-x-access-token')
       cookies.remove('dockhack-userId')
       this.$router.push('/')
@@ -40,6 +40,14 @@ html {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
+}
+
+button{
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        outline: none;
+        padding: 0;
 }
 
 input:focus {

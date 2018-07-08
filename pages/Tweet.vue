@@ -8,6 +8,8 @@
 
 <script>
 import Idea from "~/components/Idea.vue";
+import Cookies from "universal-cookie";
+const cookies = new Cookies();
 
 export default {
   components: {
@@ -32,13 +34,12 @@ export default {
         console.log(this.mentionToId);
         let data = {
           mentionTo: this.mentionToId,
-          ideaText: this.tweet
+          ideaText: this.tweet,
+          userId: cookies.get('dockhack-userId')
         };
         try {
           await this.$axios.post(
-            "https://dock-hack.herokuapp.com/api/tweetNewIdea",
-            { 0: data }
-          );
+            "http://localhost:8080/api/tweetNewIdea", data);
           let newIdea = {
             date:'',
             id: 99999,

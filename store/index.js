@@ -18,6 +18,9 @@ const store = () =>
         console.log('addIdea')
         console.log(newIdea)
         state.ideas.unshift(newIdea)
+      },
+      deleteIdeas (state) {
+        state.ideas = []
       }
     },
     actions: {
@@ -33,7 +36,7 @@ const store = () =>
             'x-access-token': cookies.get('dockhack-x-access-token')
           }
         }
-        const res = await this.$axios.get('https://quattorroserver.herokuapp.com/api/general/' + reqData.userId, config)
+        const res = await this.$axios.get('http://localhost:8080/api/general/' + reqData.userId, config)
         const ideas = res.data
         // ideaをランダムに並び替えます
         for (let i = ideas.length - 1; i >= 0; i--) {
@@ -44,6 +47,9 @@ const store = () =>
       },
       addIdea ({ commit }, newIdea) {
         commit('addIdea', newIdea)
+      },
+      deleteIdeas ({ commit }) {
+        commit('deleteIdeas')
       }
     }
   })
