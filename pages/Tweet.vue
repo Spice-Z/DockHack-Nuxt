@@ -29,6 +29,11 @@ export default {
   },
   methods: {
     postNewIdea: async function(event) {
+      const config = {
+        headers: {
+          'x-access-token': cookies.get('dockhack-x-access-token')
+        }
+      };
       if (this.tweet && this.mentionToId) {
         console.log("mentionToId is");
         console.log(this.mentionToId);
@@ -39,7 +44,7 @@ export default {
         };
         try {
           await this.$axios.post(
-            "https://quattorroserver.herokuapp.com/api/tweetNewIdea", data);
+            "https://quattorroserver.herokuapp.com/api/tweetNewIdea", data, config);
           let newIdea = {
             date:'',
             id: 99999,
@@ -61,7 +66,7 @@ export default {
         try {
           await this.$axios.post(
             "https://quattorroserver.herokuapp.com/api/tweetNewIdea",
-            data
+            data, config
           );
           let newIdea = {
             date:'',
