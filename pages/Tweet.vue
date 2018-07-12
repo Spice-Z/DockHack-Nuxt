@@ -37,17 +37,16 @@ export default {
       if (this.tweet && this.mentionToId) {
         console.log("mentionToId is");
         console.log(this.mentionToId);
-        let data = {
+        const data = {
           mentionTo: this.mentionToId,
           ideaText: this.tweet,
           userId: cookies.get('dockhack-userId')
         };
         try {
-          await this.$axios.post(
-            "https://quattorroserver.herokuapp.com/api/tweetNewIdea", data, config);
-          let newIdea = {
+          const addResult = await this.$axios.post( "https://quattorroserver.herokuapp.com/api/tweetNewIdea", data, config);
+          const newIdea = {
             date:'',
-            id: 99999,
+            id: addResult.data.newId,
             idea_text: this.tweet,
             is_mention_to: this.mentionToId,
             is_mentiond: ''
@@ -58,23 +57,20 @@ export default {
         }
       }
       if (this.tweet && !this.mentionToId) {
-        let data = {
+        const data = {
           ideaText: this.tweet,
           userId: cookies.get('dockhack-userId')
           };
-          console.log(data);
         try {
-          await this.$axios.post(
-            "https://quattorroserver.herokuapp.com/api/tweetNewIdea",
-            data, config
-          );
-          let newIdea = {
+          const addResult = await this.$axios.post("https://quattorroserver.herokuapp.com/api/tweetNewIdea", data, config );
+          const newIdea = {
             date:'',
-            id: 99999,
+            id: addResult.data.newId,
             idea_text: this.tweet,
             is_mention_to: '',
             is_mentiond: ''
           }
+          console.log(newIdea);
           this.$store.dispatch("addIdea",newIdea);
         } catch (error) {
           console.log(error);
