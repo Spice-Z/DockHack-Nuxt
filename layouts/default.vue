@@ -21,7 +21,7 @@ export default {
       this.$store.dispatch("deleteIdeas")
       cookies.remove('dockhack-x-access-token')
       cookies.remove('dockhack-userId')
-      this.$router.push('/logOut')
+      this.$router.push('/')
     }
   }
 };
