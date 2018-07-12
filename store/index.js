@@ -20,7 +20,7 @@ const store = () =>
         state.ideas.unshift(newIdea)
       },
       deleteIdeas (state) {
-        state.ideas = []
+        state.ideas = null
       }
     },
     actions: {
