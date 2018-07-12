@@ -6,6 +6,7 @@ export default function ({redirect, route}) {
   if (route.path === '/') {
     if (token) {
       console.log('have token')
+      console.log(token)
       redirect('/IL')
     }
   } else {
