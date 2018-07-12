@@ -17,4 +17,9 @@ export default function ({redirect, route}) {
       redirect('/')
     }
   }
+  if (route.path === '/logOut') {
+    cookies.remove('dockhack-x-access-token')
+    cookies.remove('dockhack-userId')
+    redirect('/')
+  }
 }
