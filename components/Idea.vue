@@ -29,7 +29,8 @@ export default {
     },
     deleteIdea: async function(event) {
       let result = await deleteIdea(this.idea.id);
-      await this.closeDeleteModal();
+      this.$store.dispatch("deleteIdea",this.idea.id);
+      this.closeDeleteModal();
     }
   },
   filters:{
@@ -41,7 +42,7 @@ export default {
 </script>
 
 
-<style scope>
+<style scoped>
 .idea {
   position: relative;
   border-radius: 7px;

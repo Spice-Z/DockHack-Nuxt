@@ -19,6 +19,16 @@ const store = () =>
         console.log(newIdea)
         state.ideas.unshift(newIdea)
       },
+      deleteIdea (state, ideaId) {
+        console.log('delete')
+        state.ideas.some(function (element, index) {
+          if (element.id === ideaId) {
+            console.log(state.ideas)
+            console.log(element)
+            state.ideas.splice(index, 1)
+          }
+        })
+      },
       deleteIdeas (state) {
         state.ideas = null
       }
@@ -47,6 +57,9 @@ const store = () =>
       },
       addIdea ({ commit }, newIdea) {
         commit('addIdea', newIdea)
+      },
+      deleteIdea ({commit}, ideaId) {
+        commit('deleteIdea', ideaId)
       },
       deleteIdeas ({ commit }) {
         commit('deleteIdeas')

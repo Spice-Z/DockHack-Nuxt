@@ -15,7 +15,7 @@ export default {
 </script>
 
 
-<style scope>
+<style scoped>
 .FIdea {
   padding: 18px;
   background-color: rgba(255, 255, 255, 0.3);

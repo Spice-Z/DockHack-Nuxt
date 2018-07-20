@@ -62,6 +62,10 @@ export default {
 </script>
 
 <style>
+a {
+  text-decoration: none;
+}
+
 .container {
   margin-top: 56px;
   padding: 18px 24px 0 24px;
