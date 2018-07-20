@@ -76,7 +76,8 @@ export default {
           console.log(error);
         }
       }
-      this.tweet = await "";
+      this.tweet = "";
+      this.$router.go(-1);
       return;
     }
   }
