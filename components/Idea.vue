@@ -1,5 +1,5 @@
 <template>
-  <div class="idea">
+  <div class="idea" :class="{ deletedIDea : isDeleted }">
     <span class="button-in-idea" @click="openDeleteModal"></span>
     <nuxt-link :to="{ path: '/IDetail', query: { FIdeaId: idea.id }}">{{idea.idea_text || makeNewLine }}</nuxt-link>
     <div v-if="isShowDelete" class="delete-modal">
@@ -17,7 +17,8 @@ export default {
   data: function() {
     return {
       idea: this.value,
-      isShowDelete: false
+      isShowDelete: false,
+      isDeleted: false
     };
   },
   methods: {
@@ -30,6 +31,7 @@ export default {
     deleteIdea: async function(event) {
       let result = await deleteIdea(this.idea.id);
       this.$store.dispatch("deleteIdea",this.idea.id);
+      this.isDeleted = true;
       this.closeDeleteModal();
     }
   },
@@ -52,6 +54,10 @@ export default {
   font-family: "Hiragino Sans";
   font-size: 20px;
   line-height: 30px;
+}
+
+.deletedIDea {
+  display: none;
 }
 
 .button-in-idea {
