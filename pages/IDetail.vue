@@ -21,18 +21,13 @@ export default {
   layout: "default",
   data: function() {
     return {
-      FIdeaId: null,
-      pass: "",
+      FIdeaId: this.$route.query.FIdeaId,
       ideas: this.$store.getters.ideas
     };
   },
-  asyncData(context) {
-    return {
-      FIdeaId: context.query["FIdeaId"]
-    };
-  },
   methods: {
-    getFIdea: function() {
+    getFIdea() {
+      this.redirectWhenNoData();
       if (this.FIdeaId) {
         let Fid = this.FIdeaId;
         return this.ideas.find(function(idea) {
@@ -41,13 +36,16 @@ export default {
       }
       return;
     },
-    getUnderIdeas: function() {
+    getUnderIdeas() {
+      this.redirectWhenNoData();
       return extractUnderIdea(this.FIdeaId, this.ideas);
     },
-    getUpperIdeas: function() {
+    getUpperIdeas() {
+      this.redirectWhenNoData();
       return extractUpperIdea(this.FIdeaId, this.ideas);
     },
-    getLastIdeaId: function() {
+    getLastIdeaId() {
+      this.redirectWhenNoData();
       let lastIdea = this.getUnderIdeas().pop();
       if (lastIdea) {
         return lastIdea.id;
@@ -56,6 +54,11 @@ export default {
         return this.FIdeaId;
       }
       return "";
+    },
+    redirectWhenNoData(){
+      if (!this.FIdeaId || !this.ideas) {
+        this.$router.push('/IL');
+      }
     }
   }
 };
